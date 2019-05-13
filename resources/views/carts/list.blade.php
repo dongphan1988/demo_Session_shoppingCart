@@ -11,18 +11,19 @@
     @if(Session::has('cart'))
         totalQty = {{$carts->totalQty}} <br>
         totalPrice = {{$carts->totalPrice}} <br>
+        <table class="table" style="">
+            <thead>
+            <tr style=" background: #f6993f;">
+                <th style="text-align: center" scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
         @foreach($carts->items as $key=>$product)
 
-                <table class="table" style="">
-                    <thead>
-                    <tr style=" background: #f6993f;">
-                        <th style="text-align: center" scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Subtotal</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                    </thead>
+
                     <form action="{{route('carts.update',['id'=>$product['item']->id])}}" method="post">
                         @csrf
 
